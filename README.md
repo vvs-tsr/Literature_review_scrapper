@@ -4,11 +4,11 @@ An automated pipeline for harvesting, deduplicating, scoring, and exporting acad
 
 ## How It Works
 
-1. **Harvest** — queries OpenAlex for papers matching your keywords across a configurable time window
-2. **Deduplicate** — merges duplicate results by DOI or title similarity
-3. **Enrich** — attaches journal impact factors and SJR scores from a venue metrics database
-4. **Score** — ranks each paper using a weighted multi-factor scoring model
-5. **Export** — writes the top N papers to `.csv`, `.json`, and `.bib` files
+1. **Harvest** - queries OpenAlex for papers matching your keywords across a configurable time window
+2. **Deduplicate** - merges duplicate results by DOI or title similarity
+3. **Enrich** - attaches journal impact factors and SJR scores from a venue metrics database
+4. **Score** - ranks each paper using a weighted multi-factor scoring model
+5. **Export** - writes the top N papers to `.csv`, `.json`, and `.bib` files
 
 ## Tunable Parameters
 
@@ -34,7 +34,7 @@ The final score is a weighted sum of five sub-scores. Weights are in `WEIGHTS` a
 | `pub_strength` | `0.20` | Normalised combination of impact factor, SJR score, venue h-index, and open-access status. |
 | `velocity` | `0.10` | Citations per year (normalised). Favours fast-rising papers. |
 
-**Example — prioritise recent work:**
+**Example - prioritise recent work:**
 ```python
 WEIGHTS = {
     'relevance':    0.30,
@@ -54,10 +54,10 @@ In `harvest_openalex()`, set the `mailto` field to your email address so OpenAle
 
 ## Setup
 
-### Option 1 — Single click (Windows)
+### Option 1 - Single click (Windows)
 Double-click `install.bat`. It will create a virtual environment and install all dependencies automatically.
 
-### Option 2 — Manual
+### Option 2 - Manual
 ```bash
 python -m venv venv
 venv\Scripts\activate        # Windows
@@ -77,9 +77,9 @@ Output files (`top_100_papers.csv`, `top_100_papers.json`, `top_100_papers.bib`)
 
 See [requirements.txt](requirements.txt) for the full list. Key packages:
 
-- `pyalex` — OpenAlex API client
-- `pandas` / `polars` — data manipulation
-- `scikit-learn` — TF-IDF vectorisation
-- `rapidfuzz` — fuzzy title deduplication
-- `bibtexparser` — BibTeX export
-- `scholarly` / `semanticscholar` / `habanero` — supplementary data sources
+- `pyalex` - OpenAlex API client
+- `pandas` / `polars` - data manipulation
+- `scikit-learn` - TF-IDF vectorisation
+- `rapidfuzz` - fuzzy title deduplication
+- `bibtexparser` - BibTeX export
+- `scholarly` / `semanticscholar` / `habanero` - supplementary data sources
